@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./style/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="header">
+        <h1>Desired Flat Details</h1>
+    </div>
+    <div class="triangle-down"></div>
+
+    <form id="myForm" action="flatPrice.html">
+        <input type="text" id="search1" name="floor" placeholder="Enter Floor Area (in sqm)" type="number" pattern="[0-9]*"/>
+    </form>
+
+    <div id="foot">
+        <button class="buttons" onclick="goBack()">Back</button>
+        <div style="width: 130px;">
+            <a href="town.html"><div class="circle"></div></a>
+            <a href="storey.html"><div class="circle"></div></a>
+            <a href="type.html"><div class="circle"></div></a>
+            <a href="age.html"><div class="circle"></div></a>
+            <div class="circle" style="background-color: #bfbfbf;"></div>
+        </div>
+        <input class="buttons" type="submit" form="myForm" value="Done!"/>
+    </div>
+
+    <script src="./script/filter.js"></script>
+</body>
+</html>

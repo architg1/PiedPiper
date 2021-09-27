@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./style/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="header">
+        <h1>Desired Flat Details</h1>
+    </div>
+    <div class="triangle-down"></div>
+
+    <input type="text" id="search" onkeyup="myFunction()" placeholder="Select Preferred Flat Type"/>
+    <form id="myForm" action="age.html">
+    <div id="form"> 
+        <ul type="none" id="myUL">
+            <li>
+                <input type='radio' class="radio" value='3 room' name='type' id='3r' required/>
+                <label for='3r'>3 Room</label>
+            </li>
+            <li>
+                <input type='radio' class="radio" value='4 room' name='type'  id='4r'/>
+                <label for='4r'>4 Room</label>
+            </li>
+            <li>
+                <input type='radio' class="radio" value='5 room' name='type'  id='5r'/>
+                <label for='5r'>5 Room</label>
+            </li>
+            <li>
+                <input type='radio' class="radio" value='Executive' name='type'  id='ex'/>
+                <label for='ex'>Executive</label>
+            </li>
+        </ul>
+    </div>
+    </form>
+
+    <div id="foot">
+        <button class="buttons" onclick="goBack()">Back</button>
+        <div style="width: 130px;">
+            <a href="town.html"><div class="circle"></div></a>
+            <a href="storey.html"><div class="circle"></div></a>
+            <div class="circle" style="background-color: #bfbfbf;"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+        <input class="buttons" type="submit" form="myForm" value="Next"/>
+    </div>
+
+    <script src="./script/filter.js"></script>
+</body>
+</html>

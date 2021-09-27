@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./style/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="header">
+        <h1>Desired Flat Details</h1>
+    </div>
+    <div class="triangle-down"></div>
+
+    <!--<div id="prompt">Select Town Name</div>-->
+
+    <input type="text" id="search" onkeyup="myFunction()" placeholder="Select Town Name"/>
+    <form id="myForm" action="storey.html">
+    <div id="form"> 
+        <ul type="none" id="myUL">
+            <li>
+                <input type='radio' class="radio" value='Ang Mo Kio' name='town' id='AMK' required/>
+                <label for='AMK'>Ang Mo Kio</label>
+            </li>
+            <li>
+                <input type='radio' class="radio" value='Jurong East' name='town'  id='JE'/>
+                <label for='JE'>Jurong East</label>
+            </li>
+            <li>
+                <input type='radio' class="radio" value='Bedok' name='town'  id='Bedok'/>
+                <label for='Bedok'>Bedok</label>
+            </li>
+            <li>
+                <input type='radio' class="radio" value='Pioneer' name='town'  id='Pioneer'/>
+                <label for='Pioneer'>Pioneer</label>
+            </li>
+            <li>
+                <input type='radio' class="radio" value='Woodlands' name='town'  id='Woodlands'/>
+                <label for='Woodlands'>Woodlands</label>
+            </li>
+            <li>
+                <input type='radio' class="radio" value='Bishan' name='town'  id='Bishan'/>
+                <label for='Bishan'>Bishan</label>
+            </li>
+            <li>
+                <input type='radio' class="radio" value='Bugis' name='town'  id='Bugis'/>
+                <label for='Bugis'>Bugis</label>
+            </li>
+        </ul>
+    </div>
+    </form>
+
+    <div id="foot">
+        <button class="buttons" onclick="goBack()">Back</button>
+        <div style="width: 130px;">
+            <div class="circle" style="background-color: #bfbfbf;"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+        <input class="buttons" type="submit" form="myForm" value="Next"/>
+    </div>
+    
+    <script src="./script/filter.js"></script>
+</body>
+</html>
