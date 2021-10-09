@@ -106,4 +106,3 @@ def delete(username, id):
     db.session.delete(ID)
     db.session.commit()
     return render_template('user.html', user=user)
-

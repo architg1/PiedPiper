@@ -1,7 +1,83 @@
-{% extends "base.html" %}
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - Pied Piper</title>
+        {% else %}
+        <title>Pied Piper</title>
+        {% endif %}
+        <style>
+            body {/*background-color: #272838;*/
+               /* mix-blend-mode: hard-light;*/
+                text-align: center;
+               /* color:#FFFFFF;
+                font-family: Playfair Display;
+                font-style: normal;*/}
+            a:link {
+            color: #FFFFFF;
+            background-color: rgb(0, 129, 129);
+            text-decoration: none;
+            }
 
-{% block content %}
-    <h1>Resale Price Estimator (User: {{ user.username }})</h1>
+            a:visited {
+            color: #FFFFFF;
+            background-color: rgb(0, 129, 129);
+            text-decoration: none;
+            }
+
+            a:hover {
+            color: rgb(0, 129, 129);
+            background-color: transparent;
+            text-decoration: underline;
+            }
+
+            a:active {
+            color: rgb(0, 129, 129);
+            background-color: transparent;
+            text-decoration: underline;
+}
+        </style>
+
+        <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="sellerStyle.css" />
+    <link
+      href="https://use.fontawesome.com/releases/v5.0.7/css/all.css"
+      rel="stylesheet"
+    />
+    </head>
+
+    <body>
+        <div>
+            Pied Piper:
+            <a href="{{ url_for('index') }}">Home</a>
+            {% if current_user.is_anonymous %}
+            <a href="{{ url_for('login') }}">Login</a>
+            {% else %}
+            <a href="{{ url_for('user', username=current_user.username) }}">Profile</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+            {% endif %}
+        </div>
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+
+
+
+
+        <h1>Resale Price Estimator (User: {{ user.username }})</h1>
     <form action="" method="post">
         {{ form.hidden_tag() }}
         <p>
@@ -48,4 +124,5 @@
         </p>
         <p>{{ form.submit() }}</p>
     </form>
-{% endblock %}
+    </body>
+    </html>

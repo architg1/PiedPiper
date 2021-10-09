@@ -1,0 +1,104 @@
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+#body {
+  background-color: #272838;
+}
+
+#title {
+  color: white;
+  font-size: 70px;
+  margin-left: 5%;
+}
+
+#description {
+  color: white;
+  margin-left: 5%;
+  font-size: 20px;
+}
+
+#triangle1 {
+  position: absolute;
+  width: 500px;
+  height: 1000px;
+  left: 100px;
+  top: -596.02px;
+  z-index: -1;
+  background: #272838;
+  mix-blend-mode: hard-light;
+  border-radius: 10px;
+  transform: rotate(55.25deg);
+}
+
+#triangle2 {
+  position: absolute;
+  width: 700px;
+  height: 1000px;
+  left: 900px;
+  top: -237px;
+  z-index: -1;
+  background: #ffffff;
+  border-radius: 10px;
+  transform: rotate(33.99deg);
+}
+
+#triangle3 {
+  position: absolute;
+  width: 717.23px;
+  height: 700px;
+  left: 1000px;
+  top: -50px;
+  z-index: -1;
+  background: #c4c4c4;
+  mix-blend-mode: normal;
+  border-radius: 10px;
+  transform: rotate(27.94deg);
+}
+
+#triangle4 {
+  position: absolute;
+  width: 869.6px;
+  height: 800px;
+  left: 1110px;
+  top: 30px;
+  z-index: -1;
+  background: #272838;
+  mix-blend-mode: hard-light;
+  border-radius: 10px;
+  transform: rotate(27.82deg);
+}
+
+#login {
+  color: white;
+  margin-left: 5%;
+  font-size: 40px;
+}
+
+#username {
+  color: white;
+  margin-left: 5%;
+  font-size: 25px;
+}
+
+#password {
+  color: white;
+  margin-left: 5%;
+  font-size: 25px;
+}
+
+#loginButton {
+  background-color: #272838;
+  color: white;
+  border-color: white;
+  position: absolute;
+  bottom: 50px;
+  left: 30%;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-top: 50px;
+  font-size: 25px;
+}

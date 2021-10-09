@@ -1,6 +1,190 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% if title %}
+        <title>{{ title }} - Pied Piper</title>
+        {% else %}
+        <title>Pied Piper</title>
+        {% endif %}
+        <style>
+           html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
 
-{% block content %}
-<h1>Welcome, Prospective Seller (User:{{ current_user.username }})</h1>
-<div><p>Click here if you want to use flat resale price estimator: <b><a href="{{ url_for('resalepriceestimator', username=current_user.username) }}">RESALE PRICE ESTIMATOR</a></b></p></div>
-{% endblock %}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#topDesign {
+  background-color: white;
+}
+#title {
+  margin-left: 20px;
+}
+#bottomDesign {
+  background-color: #272838;
+}
+
+#triangle1 {
+  width: 0;
+  height: 0;
+  border-top: 25px solid transparent;
+  border-left: 50px solid black;
+  margin-bottom: 10px;
+}
+
+#triangle2 {
+  position: absolute;
+  left: 50%;
+  top: 0px;
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-top: 50px solid black;
+}
+
+#circle1 {
+  border-radius: 50%;
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  left: 60%;
+  top: 120px;
+
+  background: #f0ccbc;
+  mix-blend-mode: normal;
+}
+
+#circle2 {
+  border-radius: 50%;
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  left: 85%;
+  top: -40px;
+
+  background: #f0ccbc;
+  mix-blend-mode: normal;
+}
+
+#picture {
+  position: absolute;
+  left: 72%;
+  top: 110px;
+}
+
+#buyerButton {
+  margin-top: 50px;
+  background-color: #f0ccbc;
+  border-radius: 20px;
+  padding: 10px 32px;
+  font-size: 20px;
+  margin-left: 45%;
+}
+#sellerButton {
+  background-color: #f0ccbc;
+  border-radius: 20px;
+  padding: 10px 32px;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 60px;
+  margin-left: 45%;
+}
+
+
+            a:link {
+            color: rgb(48, 46, 190);
+            background-color: transparent;
+            text-decoration: none;
+            }
+
+            a:visited {
+                color: rgb(48, 46, 190);
+            background-color: transparent;
+            text-decoration: none;
+            }
+
+            a:hover {
+                color: rgb(48, 46, 190);
+            background-color: transparent;
+            text-decoration: underline;
+            }
+
+            a:active {
+                color: rgb(48, 46, 190);
+            background-color: transparent;
+            text-decoration: underline;
+            }
+
+        </style>
+
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+         href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap"
+        rel="stylesheet"
+    />
+    <link rel="stylesheet" href="loginStyle.css" />
+    <link
+        href="https://use.fontawesome.com/releases/v5.0.7/css/all.css"
+        rel="stylesheet"
+    />
+
+    <title>Seller</title>
+    </head>
+
+    <body>
+        Quick Access:
+        <a href="{{ url_for('index') }}">Home</a>
+        {% if current_user.is_anonymous %}
+        <a href="{{ url_for('login') }}">Login</a>
+        {% else %}
+        <a href="{{ url_for('user', username=current_user.username) }}">Profile</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+        {% endif %}
+    </div>
+    <hr>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+    <div id="topDesign">
+        <div id="triangle2"></div>
+        <div id="title">
+            <h1 style="font-size: 130px">Seller Functions</h1>
+<p style="font-size: 25px">
+    Please choose which function you would like to use:
+  </p>
+       </div>
+      <div id="triangle1"></div>
+      <div id="circle1"></div>
+      <div id="circle2"></div>
+     
+      <img src="{{ url_for('static', filename='picture.png') }}" id="picture" width="270" height="270">
+
+
+       </div>
+
+<div id="bottomDesign"><p><b><a href="{{ url_for('resalepriceestimator', username=current_user.username) }}"><button id="buyerButton">Resale Price Estimator</button></a></b></p>
+    <p><b><a>
+
+
+      
+
+        .
+    </a></b></p></div>
+
+    </body>
+</html>
