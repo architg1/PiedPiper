@@ -42,6 +42,7 @@ class resaleInput(db.Model):
     floorArea = db.Column(db.Integer)
     storey = db.Column(db.String(64))
     age = db.Column(db.String(64))
+    OUTPUT =db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 class flatpriceInput(db.Model):
@@ -51,6 +52,7 @@ class flatpriceInput(db.Model):
     floorArea = db.Column(db.Integer)
     storey = db.Column(db.String(64))
     age = db.Column(db.String(64))
+    OUTPUT =db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 class townInput(db.Model):
@@ -59,6 +61,9 @@ class townInput(db.Model):
     floorArea = db.Column(db.Integer)
     storey = db.Column(db.String(64))
     age = db.Column(db.String(64))
+    OUTPUT1 =db.Column(db.String(64))
+    OUTPUT2 =db.Column(db.String(64))
+    OUTPUT3 =db.Column(db.String(64))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 @login.user_loader
