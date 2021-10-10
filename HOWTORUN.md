@@ -1,0 +1,15 @@
+# PiedPiper
+change directory to webapp
+install the following by typing into CMD:
+pip install flask
+pip install Flask-Session
+pip install flask-wtf
+pip install flask-sqlalchemy
+pip install flask-migrate
+pip install flask-login
+pip install email-validator
+
+after that to run type the following:
+
+set FLASKAPP=mainapp.py
+flask run
