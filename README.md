@@ -1,3 +1,5 @@
+HOW TO RUN FLASK WEB APP:  
+
 1. pull all files to your pc  
 2. change directory to webapp  
 3. install the following by typing into CMD:  
