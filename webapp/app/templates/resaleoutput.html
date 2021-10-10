@@ -1,0 +1,269 @@
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - Pied Piper</title>
+        {% else %}
+        <title>Pied Piper</title>
+        {% endif %}
+        <style>
+            body {/*background-color: #272838;*/
+               /* mix-blend-mode: hard-light;*/
+                text-align: center;
+               /* color:#FFFFFF;
+                font-family: Playfair Display;
+                font-style: normal;*/}
+            a:link {
+            color: #FFFFFF;
+            background-color: rgb(49, 63, 145);
+            text-decoration: none;
+            }
+
+            a:visited {
+            color: #FFFFFF;
+            background-color: rgb(49, 63, 145);
+            text-decoration: none;
+            }
+
+            a:hover {
+            color: rgb(0, 129, 129);
+            background-color: transparent;
+            text-decoration: underline;
+            }
+
+            a:active {
+            color: rgb(0, 129, 129);
+            background-color: transparent;
+            text-decoration: underline;
+
+            
+            }
+
+            #header{
+    text-align: center;
+    border-radius: 15px;
+    background-color: #C4C4C4;
+    height: 15vh;
+    width: 80%;
+    vertical-align: middle;
+    line-height: 15vh;
+    margin:0 auto 0 auto;
+}
+
+body{
+    background-color: #272838;
+}
+
+
+
+.triangle-down {
+	width: 0;
+	height: 0;
+	border-left: 25px solid transparent;
+	border-right: 25px solid transparent;
+	border-top: 50px solid #C4C4C4;
+    margin:0 auto 0 auto;
+}
+
+/*#prompt{
+    color:white;
+    border: 2px solid white;
+    border-radius: 10px;
+    height: 7vh;
+    width:25%;
+    vertical-align: middle;
+    line-height: 7vh;
+    margin:2% auto 0 auto;
+    padding: 0 0 0 3%;
+    font-size: 1.3em;
+    box-sizing: border-box;
+}*/
+
+#pied{
+    color: #FFFFFF;
+}
+#form{
+    color:white;
+    border: 2px solid white;
+    border-radius: 10px;
+    height: 40vh;
+    width:25%;
+    vertical-align: middle;
+    line-height: 60px;
+    margin:1% auto 0 auto;
+    box-sizing: border-box;
+    font-size: 1.3em;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#form::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 10px;
+}
+
+#form::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+   
+#form::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+label{
+    display: block; 
+    height: 100%;
+    padding:0 0 0 7%;
+}
+
+.radio {
+    /*visibility:hidden;*/
+    display: none;
+}
+
+input:checked + label{
+    background-color: #C4C4C4;
+}
+
+li:hover {
+    background-color: #C4C4C4;
+}
+
+ul{
+    padding:0;
+}
+
+#search1{
+    /*height: 4vh;
+    width: 25%;
+    border-radius: 10px;
+    margin:2% auto 0 auto;
+    display: block;*/
+    margin:10% auto 0 auto;
+    display: block;
+
+    color:white;
+    background-color:#29293d;
+    border: 2px solid white;
+    border-radius: 10px;
+    height: 7vh;
+    width:25%;
+    font-size: 1.3em;
+    box-sizing: border-box;
+    font-family: serif;
+}
+
+#search{
+    margin:2% auto 0 auto;
+    display: block;
+
+    color:white;
+    background-color:#29293d;
+    border: 2px solid white;
+    border-radius: 10px;
+    height: 7vh;
+    width:25%;
+    font-size: 1.3em;
+    box-sizing: border-box;
+    font-family: serif;
+}
+
+::placeholder { 
+    color: white;
+    opacity: 1; 
+    padding: 0 0 0 7%;
+}
+
+.buttons{
+    width:8%;
+    height:5vh;
+    border-radius: 30px;
+    background-color: #F0CCBC;
+}
+
+#foot{
+    margin:0 auto 2% auto;
+    width: 80%;
+    display: flex;              
+    flex-direction: row;            /* default value; can be omitted */
+    justify-content: space-between;
+    
+    position:absolute;
+    bottom:0;
+    left: 0; 
+    right: 0; 
+}
+
+.circle {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    float: left;
+    margin:0 2% 0 2%;
+    border: 2px solid white;
+}
+        </style>
+
+        <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="sellerStyle.css" />
+    <link
+      href="https://use.fontawesome.com/releases/v5.0.7/css/all.css"
+      rel="stylesheet"
+      
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    </head>
+
+    <body>
+        <div>
+            <div id="pied">Quick Access:</div>
+            <a href="{{ url_for('index') }}">Home</a>
+            {% if current_user.is_anonymous %}
+            <a href="{{ url_for('login') }}">Login</a>
+            {% else %}
+            <a href="{{ url_for('user', username=current_user.username) }}">Profile</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+            {% endif %}
+        </div>
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+
+        <div id="header">
+            <img src="./img/house.jpg" alt="house" id="house">
+            <div id="circle"></div>
+            <div id="circle1"></div>
+            <div class="triangle-up"></div>
+            <div class="triangle-down"></div>
+            Estimated Flat Price
+        </div>
+    
+        <div id="container">
+            <div id="result">
+                Your estimated flat price is: <br>
+                S$100,000
+            </div>
+            
+        </div>
+        
+        <a href="recommend.html"><button class="buttons">Save</button></a>
+    </body>
+    </html>

@@ -9,6 +9,8 @@ from flask import request
 from werkzeug.urls import url_parse
 from app import db
 from app.forms import RegistrationForm
+from app.forms import priceEstimatorForm, townForm
+from app.models import flatpriceInput,townInput
 
 
 @app.route('/')
@@ -81,21 +83,35 @@ def resalepriceestimator(username):
         floorArea=form.floorArea.data, storey=form.storey.data, age=form.age.data, user_id = user.id)
         db.session.add(rsinput)
         db.session.commit()
-        return redirect(url_for('index'))
+        return redirect(url_for('resaleprice',username=username))
 
     return render_template('resalepriceestimator.html', user=user, form=form)
 
-@app.route('/flatpriceestimator/<username>')
+@app.route('/flatpriceestimator/<username>',methods=['GET', 'POST'])
 @login_required
 def flatpriceestimator(username):
     user = User.query.filter_by(username=username).first_or_404()
-    return render_template('flatpriceestimator.html', user=user)
+    form = priceEstimatorForm()
+    if form.validate_on_submit():
+        fpinput = flatpriceInput(town=form.town.data,flatType=form.flatType.data,floorArea=form.floorArea.data,
+        storey=form.storey.data, age=form.age.data, user_id = user.id)
+        db.session.add(fpinput)
+        db.session.commit()
+        return redirect(url_for('flatprice',username=username))
+    return render_template('flatpriceestimator.html', user=user, form=form)
 
-@app.route('/townrecommender/<username>')
+@app.route('/townrecommender/<username>',methods=['GET', 'POST'])
 @login_required
 def townrecommender(username):
     user = User.query.filter_by(username=username).first_or_404()
-    return render_template('townrecommender.html', user=user)
+    form = townForm()
+    if form.validate_on_submit():
+        tinput = townInput(flatType=form.flatType.data,floorArea=form.floorArea.data,
+        storey=form.storey.data, age=form.age.data, user_id = user.id)
+        db.session.add(tinput)
+        db.session.commit()
+        return redirect(url_for('recommend',username=username))
+    return render_template('townrecommender.html', user=user, form=form)
 
 @app.route('/delete/<username>')
 @app.route('/delete/<username>/<id>')
@@ -106,3 +122,43 @@ def delete(username, id):
     db.session.delete(ID)
     db.session.commit()
     return render_template('user.html', user=user)
+
+@app.route('/deletebuyer/<username>')
+@app.route('/deletebuyer/<username>/<id>')
+@login_required
+def deletebuyer(username, id):
+    user = User.query.filter_by(username=username).first_or_404()
+    ID = flatpriceInput.query.filter_by(id=id).first_or_404()
+    db.session.delete(ID)
+    db.session.commit()
+    return render_template('user.html', user=user)
+
+@app.route('/deletetown/<username>')
+@app.route('/deletetown/<username>/<id>')
+@login_required
+def deletetown(username, id):
+    user = User.query.filter_by(username=username).first_or_404()
+    ID = townInput.query.filter_by(id=id).first_or_404()
+    db.session.delete(ID)
+    db.session.commit()
+    return render_template('user.html', user=user)
+
+@app.route('/resaleoutput/<username>')
+@login_required
+def resaleoutput(username):
+    return render_template('resaleoutput.html', user=user)
+
+@app.route('/flatprice/<username>')
+@login_required
+def flatprice(username):
+    return render_template('flatprice.html', user=user)
+
+@app.route('/recommend/<username>')
+@login_required
+def recommend(username):
+    return render_template('recommend.html', user=user)
+
+@app.route('/resaleprice/<username>')
+@login_required
+def resaleprice(username):
+    return render_template('resale.html', user=user)

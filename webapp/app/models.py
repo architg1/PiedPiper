@@ -11,6 +11,9 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     posts = db.relationship('Post', backref='author', lazy='dynamic')
     resaleInput = db.relationship('resaleInput', backref='author', lazy='dynamic')
+    flatpriceInput = db.relationship('flatpriceInput', backref='author', lazy='dynamic')
+    townInput = db.relationship('townInput', backref='author', lazy='dynamic')
+    
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -41,6 +44,22 @@ class resaleInput(db.Model):
     age = db.Column(db.String(64))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
+class flatpriceInput(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    town = db.Column(db.String(64))
+    flatType = db.Column(db.String(64))
+    floorArea = db.Column(db.Integer)
+    storey = db.Column(db.String(64))
+    age = db.Column(db.String(64))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+class townInput(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    flatType = db.Column(db.String(64))
+    floorArea = db.Column(db.Integer)
+    storey = db.Column(db.String(64))
+    age = db.Column(db.String(64))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 @login.user_loader
 def load_user(id):
