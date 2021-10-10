@@ -1,4 +1,3 @@
-# PiedPiper
 change directory to webapp
 install the following by typing into CMD:
 pip install flask
