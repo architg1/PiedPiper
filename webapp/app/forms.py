@@ -31,10 +31,59 @@ class RegistrationForm(FlaskForm):
 
 
 class resalepriceinputform(FlaskForm):
-    town = StringField('Select Town Name')
-    flatType = SelectField(u'Select Flat type', choices=[('2 Room', '2 Room'), (
-        '3 Room', '3 Room'), ('4 Room', '4 Room'), ('5 Room', '5 Room'), ('Executive', 'Executive')])
+    town = SelectField(u'Select Town', choices=[('ANG MO KIO', 'ANG MO KIO'), ('BEDOK', 'BEDOK'),
+                                                ('BISHAN', 'BISHAN'), ('BUKIT BATOK',
+                                                                       'BUKIT BATOK'), ('BUKIT MERAH', 'BUKIT MERAH'),
+                                                ('BUKIT PANJANG', 'BUKIT PANJANG'), ('BUKIT TIMAH',
+                                                                                     'BUKIT TIMAH'), ('CENTRAL AREA', 'CENTRAL AREA'),
+                                                ('CHOA CHU KANG', 'CHOA CHU KANG'), ('CLEMENTI', 'CLEMENTI'), (
+                                                    'GEYLANG', 'GEYLANG'), ('HOUGANG', 'HOUGANG'),
+                                                ('JURONG EAST', 'JURONG EAST'), ('JURONG WEST',
+                                                                                 'JURONG WEST'), ('KALLANG/WHAMPOA', 'KALLANG/WHAMPOA'),
+                                                ('MARINE PARADE', 'MARINE PARADE'), ('PASIR RIS',
+                                                                                     'PASIR RIS'), ('PUNGGOL', 'PUNGGOL'), ('QUEENSTOWN', 'QUEENSTOWN'),
+                                                ('SEMBAWANG', 'SEMBAWANG'), ('SENGKANG',
+                                                                             'SENGKANG'), ('SERANGOON', 'SERANGOON'), ('TAMPINES', 'TAMPINES'),
+                                                ('TOA PAYAH', 'TOA PAYOH'), ('WOODLANDS', 'WOODLANDS'), ('YISHUN', 'YISHUN')])
+    flatType = SelectField(u'Select Flat type', choices=[('2 ROOM', '2 ROOM'), (
+        '3 ROOM', '3 ROOM'), ('4 ROOM', '4 ROOM'), ('5 ROOM', '5 ROOM'), ('EXECUTIVE', 'EXECUTIVE')])
     ogprice = IntegerField('Enter Original Price')
+    floorArea = IntegerField('Enter Floor Area (in sqm)')
+    storey = SelectField(u'Select Preferred Storey', choices=[
+                         ('Low', 'Low'), ('Medium', 'Medium'), ('High', 'High')])
+    age = SelectField(u'Select Preferred Age', choices=[
+                      ('New', 'New'), ('Medium', 'Medium'), ('Old', 'Old')])
+    submit = SubmitField('Submit')
+
+
+class priceEstimatorForm(FlaskForm):
+    town = SelectField(u'Select Town', choices=[('ANG MO KIO', 'ANG MO KIO'), ('BEDOK', 'BEDOK'),
+                                                ('BISHAN', 'BISHAN'), ('BUKIT BATOK',
+                                                                       'BUKIT BATOK'), ('BUKIT MERAH', 'BUKIT MERAH'),
+                                                ('BUKIT PANJANG', 'BUKIT PANJANG'), ('BUKIT TIMAH',
+                                                                                     'BUKIT TIMAH'), ('CENTRAL AREA', 'CENTRAL AREA'),
+                                                ('CHOA CHU KANG', 'CHOA CHU KANG'), ('CLEMENTI', 'CLEMENTI'), (
+                                                    'GEYLANG', 'GEYLANG'), ('HOUGANG', 'HOUGANG'),
+                                                ('JURONG EAST', 'JURONG EAST'), ('JURONG WEST',
+                                                                                 'JURONG WEST'), ('KALLANG/WHAMPOA', 'KALLANG/WHAMPOA'),
+                                                ('MARINE PARADE', 'MARINE PARADE'), ('PASIR RIS',
+                                                                                     'PASIR RIS'), ('PUNGGOL', 'PUNGGOL'), ('QUEENSTOWN', 'QUEENSTOWN'),
+                                                ('SEMBAWANG', 'SEMBAWANG'), ('SENGKANG',
+                                                                             'SENGKANG'), ('SERANGOON', 'SERANGOON'), ('TAMPINES', 'TAMPINES'),
+                                                ('TOA PAYAH', 'TOA PAYOH'), ('WOODLANDS', 'WOODLANDS'), ('YISHUN', 'YISHUN')])
+    flatType = SelectField(u'Select Flat type', choices=[('2 ROOM', '2 ROOM'), (
+        '3 ROOM', '3 ROOM'), ('4 ROOM', '4 ROOM'), ('5 ROOM', '5 ROOM'), ('EXECUTIVE', 'EXECUTIVE')])
+    floorArea = IntegerField('Enter Floor Area (in sqm)')
+    storey = SelectField(u'Select Preferred Storey', choices=[
+                         ('Low', 'Low'), ('Medium', 'Medium'), ('High', 'High')])
+    age = SelectField(u'Select Preferred Age', choices=[
+                      ('New', 'New'), ('Medium', 'Medium'), ('Old', 'Old')])
+    submit = SubmitField('Submit')
+
+
+class townForm(FlaskForm):
+    flatType = SelectField(u'Select Flat type', choices=[('2 ROOM', '2 ROOM'), (
+        '3 ROOM', '3 ROOM'), ('4 ROOM', '4 ROOM'), ('5 ROOM', '5 ROOM'), ('EXECUTIVE', 'EXECUTIVE')])
     floorArea = IntegerField('Enter Floor Area (in sqm)')
     storey = SelectField(u'Select Preferred Storey', choices=[
                          ('Low', 'Low'), ('Medium', 'Medium'), ('High', 'High')])

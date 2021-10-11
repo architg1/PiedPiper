@@ -1,31 +1,231 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% if title %}
+        <title>{{ title }} - Pied Piper</title>
+        {% else %}
+        <title>Pied Piper</title>
+        {% endif %}
+        <style>
+            html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
 
-{% block content %}
+div.login-form {
+  color: rgb(0, 0, 0);
+}
+#body {
+    color: white;
+  background-color: #272838;
+}
+
+#title {
+  color: white;
+  font-size: 70px;
+  margin-left: 5%;
+}
+
+#description {
+  color: white;
+  margin-left: 5%;
+  font-size: 20px;
+}
+
+#triangle1 {
+  position: absolute;
+  width: 500px;
+  height: 1000px;
+  left: 100px;
+  top: -596.02px;
+  z-index: -1;
+  background: #272838;
+  mix-blend-mode: hard-light;
+  border-radius: 10px;
+  transform: rotate(55.25deg);
+}
+
+#triangle2 {
+  position: absolute;
+  width: 700px;
+  height: 1000px;
+  left: 900px;
+  top: -237px;
+  z-index: -1;
+  background: #ffffff;
+  border-radius: 10px;
+  transform: rotate(33.99deg);
+}
+
+#triangle3 {
+  position: absolute;
+  width: 717.23px;
+  height: 700px;
+  left: 1000px;
+  top: -50px;
+  z-index: -1;
+  background: #c4c4c4;
+  mix-blend-mode: normal;
+  border-radius: 10px;
+  transform: rotate(27.94deg);
+}
+
+#triangle4 {
+  position: absolute;
+  width: 869.6px;
+  height: 800px;
+  left: 1110px;
+  top: 30px;
+  z-index: -1;
+  background: #272838;
+  mix-blend-mode: hard-light;
+  border-radius: 10px;
+  transform: rotate(27.82deg);
+}
+
+#login {
+  color: white;
+  margin-left: 5%;
+  font-size: 40px;
+}
+
+#username {
+  color: rgb(0, 0, 0);
+ 
+  font-size: 25px;
+}
+
+#username1 {
+  color: rgb(255, 255, 255);
+  
+  font-size: 25px;
+}
+
+#password {
+  color: rgb(0, 0, 0);
+  
+  font-size: 25px;
+}
+#password2 {
+  color: rgb(0, 0, 0);
+  
+  font-size: 25px;
+}
+#password1 {
+  color: rgb(255, 255, 255);
+  
+  font-size: 25px;
+}
+
+#loginButton {
+  background-color: #272838;
+  color: white;
+  border-color: white;
+  position: absolute;
+  bottom: 50px;
+  left: 30%;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-top: 50px;
+  font-size: 25px;
+}
+            a:link {
+            color: rgb(124, 122, 253);
+            background-color: transparent;
+            text-decoration: none;
+            }
+
+            a:visited {
+                color: rgb(124, 122, 253);
+            background-color: transparent;
+            text-decoration: none;
+            }
+
+            a:hover {
+                color: rgb(124, 122, 253);
+            background-color: transparent;
+            text-decoration: underline;
+            }
+
+            a:active {
+                color: rgb(124, 122, 253);
+            background-color: transparent;
+            text-decoration: underline;
+            }
+
+        </style>
+
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+         href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap"
+        rel="stylesheet"
+    />
+    <link rel="stylesheet" href="loginStyle.css" />
+    <link
+        href="https://use.fontawesome.com/releases/v5.0.7/css/all.css"
+        rel="stylesheet"
+    />
+<title>Login</title>
+</head>
+
+<body id="body">
+    Quick Access:
+    <a href="{{ url_for('index') }}">Home</a>
+    {% if current_user.is_anonymous %}
+    <a href="{{ url_for('login') }}">Login</a>
+    {% else %}
+    <a href="{{ url_for('user', username=current_user.username) }}">Profile</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+    {% endif %}
+</div>
+<hr>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+{% block content %}{% endblock %}
+    <div id="triangle1"></div>
+    <h1 id="title">Pied Piper</h1>
+    <div id="triangle2"></div>
+    <div id="triangle3"></div>
+    <div id="triangle4"></div>
+    <div id="description">
     <h1>Register</h1>
     <form action="" method="post">
         {{ form.hidden_tag() }}
         <p>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}<br>
+            <label for="username1" id="username1">{{ form.username.label }}<br></label>
+            {{ form.username(class_="form-control", size=32) }}<br>
             {% for error in form.username.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
        
         <p>
-            {{ form.password.label }}<br>
-            {{ form.password(size=32) }}<br>
+            <label for="password1" id="password1">{{ form.password.label }}<br></label>
+            {{ form.password(class_="form-control", size=32) }}<br>
             {% for error in form.password.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
         <p>
-            {{ form.password2.label }}<br>
-            {{ form.password2(size=32) }}<br>
+            <label for="password1" id="password1">{{ form.password2.label }}<br></label>
+            {{ form.password2(class_="form-control", size=32) }}<br>
             {% for error in form.password2.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>{{ form.submit() }}</p>
+        
+        <p><label for="username1" id="username1">{{ form.submit() }}<br></label></p>
     </form>
-{% endblock %}
+</body>
+</html>
