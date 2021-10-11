@@ -3,11 +3,13 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, Selec
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 from app.models import User
 
+
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     remember_me = BooleanField('Remember Me')
     submit = SubmitField('Sign In')
+
 
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
@@ -27,11 +29,15 @@ class RegistrationForm(FlaskForm):
         if user is not None:
             raise ValidationError('Please use a different email address.')
 
+
 class resalepriceinputform(FlaskForm):
     town = StringField('Select Town Name')
-    flatType = SelectField(u'Select Flat type', choices=[('2 Room', '2 Room'), ('3 Room', '3 Room'), ('4 Room', '4 Room'),('5 Room', '5 Room'),('Executive', 'Executive')])
+    flatType = SelectField(u'Select Flat type', choices=[('2 Room', '2 Room'), (
+        '3 Room', '3 Room'), ('4 Room', '4 Room'), ('5 Room', '5 Room'), ('Executive', 'Executive')])
     ogprice = IntegerField('Enter Original Price')
     floorArea = IntegerField('Enter Floor Area (in sqm)')
-    storey = SelectField(u'Select Preferred Storey', choices=[('Low', 'Low'), ('Medium', 'Medium'), ('High', 'High')])
-    age = SelectField(u'Select Preferred Age', choices=[('New', 'New'), ('Medium', 'Medium'), ('Old', 'Old')])
+    storey = SelectField(u'Select Preferred Storey', choices=[
+                         ('Low', 'Low'), ('Medium', 'Medium'), ('High', 'High')])
+    age = SelectField(u'Select Preferred Age', choices=[
+                      ('New', 'New'), ('Medium', 'Medium'), ('Old', 'Old')])
     submit = SubmitField('Submit')
