@@ -1,63 +1,92 @@
 <html>
-    <head>
-        {% if title %}
-        <title>{{ title }} - Pied Piper</title>
-        {% else %}
-        <title>Pied Piper</title>
-        {% endif %}
-        <style>
-            body {/*background-color: #272838;*/
-               /* mix-blend-mode: hard-light;*/
-                text-align: center;
-               /* color:#FFFFFF;
+  <head>
+    {% if title %}
+    <title>{{ title }} - Pied Piper</title>
+    {% else %}
+    <title>Pied Piper</title>
+    {% endif %}
+    <style>
+      body {
+        /*background-color: #272838;*/
+        /* mix-blend-mode: hard-light;*/
+        text-align: center;
+        background-color: #272838;
+        color: white;
+        /* color:#FFFFFF;
                 font-family: Playfair Display;
-                font-style: normal;*/}
-            a:link {
-            color: #FFFFFF;
-            background-color: rgb(0, 129, 129);
-            text-decoration: none;
-            }
+                font-style: normal;*/
+      }
+      #header {
+        color: black;
+        text-align: center;
+        border-radius: 15px;
+        background-color: #c4c4c4;
+        height: 15vh;
+        width: 80%;
+        vertical-align: middle;
+        line-height: 15vh;
+        margin: 0 auto 0 auto;
+      }
+      .triangle-down {
+        width: 0;
+        height: 0;
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-top: 50px solid #c4c4c4;
+        margin: 0 auto 0 auto;
+      }
 
-            a:visited {
-            color: #FFFFFF;
-            background-color: rgb(0, 129, 129);
-            text-decoration: none;
-            }
+      #delete {
+        margin-top: 50px;
+        background-color: #f0ccbc;
+        border-radius: 20px;
+        padding: 10px 32px;
+        font-size: 16px;
+      }
+      a:link {
+        color: black;
+        text-decoration: none;
+      }
 
-            a:hover {
-            color: rgb(0, 129, 129);
-            background-color: transparent;
-            text-decoration: underline;
-            }
+      a:visited {
+        color: #95aaa2;
+        background-color: rgb(0, 129, 129);
+        text-decoration: none;
+      }
 
-            a:active {
-            color: rgb(0, 129, 129);
-            background-color: transparent;
-            text-decoration: underline;
-}
-        </style>
-    </head>
-    <body>
-        <div>
-            Pied Piper:
-            <a href="{{ url_for('index') }}">Home</a>
-            {% if current_user.is_anonymous %}
-            <a href="{{ url_for('login') }}">Login</a>
-            {% else %}
-            <a href="{{ url_for('user', username=current_user.username) }}">Profile</a>
-            <a href="{{ url_for('logout') }}">Logout</a>
-            {% endif %}
-        </div>
-        <hr>
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <ul>
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-        {% endwith %}
-        {% block content %}{% endblock %}
-    </body>
+      a:hover {
+        color: rgb(0, 129, 129);
+        background-color: transparent;
+        text-decoration: underline;
+      }
+
+      a:active {
+        color: rgb(0, 129, 129);
+        background-color: transparent;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      Pied Piper:
+      <a href="{{ url_for('index') }}">Home</a>
+      {% if current_user.is_anonymous %}
+      <a href="{{ url_for('login') }}">Login</a>
+      {% else %}
+      <a href="{{ url_for('user', username=current_user.username) }}"
+        >Profile</a
+      >
+      <a href="{{ url_for('logout') }}">Logout</a>
+      {% endif %}
+    </div>
+    <hr />
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %} {% endwith %} {% block content %}{% endblock %}
+  </body>
 </html>

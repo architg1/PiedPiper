@@ -6,243 +6,192 @@
         <title>Pied Piper</title>
         {% endif %}
         <style>
-            body {/*background-color: #272838;*/
-               /* mix-blend-mode: hard-light;*/
+            body {
+                /*background-color: #272838;*/
+                /* mix-blend-mode: hard-light;*/
                 text-align: center;
-               /* color:#FFFFFF;
+                background-color: #272838;
+                /* color:#FFFFFF;
                 font-family: Playfair Display;
-                font-style: normal;*/}
+                font-style: normal;*/
+            }
             a:link {
-            color: #FFFFFF;
-            background-color: rgb(0, 129, 129);
-            text-decoration: none;
+                color: black;
+                text-decoration: none;
             }
 
             a:visited {
-            color: #FFFFFF;
-            background-color: rgb(0, 129, 129);
-            text-decoration: none;
+                color: #95aaa2;
+                background-color: rgb(0, 129, 129);
+                text-decoration: none;
             }
 
             a:hover {
-            color: rgb(0, 129, 129);
-            background-color: transparent;
-            text-decoration: underline;
+                color: rgb(0, 129, 129);
+                background-color: transparent;
+                text-decoration: underline;
             }
 
             a:active {
-            color: rgb(0, 129, 129);
-            background-color: transparent;
-            text-decoration: underline;
-}
-body {/*background-color: #272838;*/
-               /* mix-blend-mode: hard-light;*/
-                text-align: center;
-               /* color:#FFFFFF;
-                font-family: Playfair Display;
-                font-style: normal;*/}
-            a:link {
-            color: #FFFFFF;
-            background-color: rgb(49, 63, 145);
-            text-decoration: none;
+                color: rgb(0, 129, 129);
+                background-color: transparent;
+                text-decoration: underline;
             }
-
-            a:visited {
-            color: #FFFFFF;
-            background-color: rgb(49, 63, 145);
-            text-decoration: none;
-            }
-
-            a:hover {
-            color: rgb(0, 129, 129);
-            background-color: transparent;
-            text-decoration: underline;
-            }
-
-            a:active {
-            color: rgb(0, 129, 129);
-            background-color: transparent;
-            text-decoration: underline;
-
             
+            #header{
+            text-align: center;
+            border-radius: 15px;
+            background-color: #C4C4C4;
+            height: 15vh;
+            width: 80%;
+            vertical-align: middle;
+            line-height: 15vh;
+            margin:0 auto 0 auto;
             }
 
-            #header{
-    text-align: center;
-    border-radius: 15px;
-    background-color: #C4C4C4;
-    height: 15vh;
-    width: 80%;
-    vertical-align: middle;
-    line-height: 15vh;
-    margin:0 auto 0 auto;
-}
+            .triangle-down {
+                width: 0;
+                height: 0;
+                border-left: 25px solid transparent;
+                border-right: 25px solid transparent;
+                border-top: 50px solid #C4C4C4;
+                margin:0 auto 0 auto;
+            }
 
-body{
-    background-color: #272838;
-}
+            #pied{
+                color: #FFFFFF;
+            }
+            #form{
+                color:white;
+                border: 2px solid white;
+                border-radius: 10px;
+                height: 40vh;
+                width:25%;
+                vertical-align: middle;
+                line-height: 60px;
+                margin:1% auto 0 auto;
+                box-sizing: border-box;
+                font-size: 1.3em;
+                overflow: scroll;
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
 
+            #form::-webkit-scrollbar {
+                width: 8px;
+                border-radius: 10px;
+            }
 
+            #form::-webkit-scrollbar-track {
+                background: #f1f1f1;
+                border-radius: 10px;
+            }
+            
+            #form::-webkit-scrollbar-thumb {
+                background: #888;
+                border-radius: 10px;
+            }
 
-.triangle-down {
-	width: 0;
-	height: 0;
-	border-left: 25px solid transparent;
-	border-right: 25px solid transparent;
-	border-top: 50px solid #C4C4C4;
-    margin:0 auto 0 auto;
-}
+            label{
+                display: block; 
+                height: 100%;
+                padding:0 0 0 7%;
+            }
 
-/*#prompt{
-    color:white;
-    border: 2px solid white;
-    border-radius: 10px;
-    height: 7vh;
-    width:25%;
-    vertical-align: middle;
-    line-height: 7vh;
-    margin:2% auto 0 auto;
-    padding: 0 0 0 3%;
-    font-size: 1.3em;
-    box-sizing: border-box;
-}*/
+            .radio {
+                /*visibility:hidden;*/
+                display: none;
+            }
 
-#pied{
-    color: #FFFFFF;
-}
-#form{
-    color:white;
-    border: 2px solid white;
-    border-radius: 10px;
-    height: 40vh;
-    width:25%;
-    vertical-align: middle;
-    line-height: 60px;
-    margin:1% auto 0 auto;
-    box-sizing: border-box;
-    font-size: 1.3em;
-    overflow: scroll;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
+            input:checked + label{
+                background-color: #C4C4C4;
+            }
 
-#form::-webkit-scrollbar {
-    width: 8px;
-    border-radius: 10px;
-}
+            li:hover {
+                background-color: #C4C4C4;
+            }
 
-#form::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-}
-   
-#form::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px;
-}
+            ul{
+                padding:0;
+            }
 
-label{
-    display: block; 
-    height: 100%;
-    padding:0 0 0 7%;
-}
+            #search1{
+                /*height: 4vh;
+                width: 25%;
+                border-radius: 10px;
+                margin:2% auto 0 auto;
+                display: block;*/
+                margin:10% auto 0 auto;
+                display: block;
 
-.radio {
-    /*visibility:hidden;*/
-    display: none;
-}
+                color:white;
+                background-color:#29293d;
+                border: 2px solid white;
+                border-radius: 10px;
+                height: 7vh;
+                width:25%;
+                font-size: 1.3em;
+                box-sizing: border-box;
+                font-family: serif;
+            }
 
-input:checked + label{
-    background-color: #C4C4C4;
-}
+            #search{
+                margin:2% auto 0 auto;
+                display: block;
+                padding: 0.6%;
+                color:white;
+                background-color:#29293d;
+                border: 2px solid white;
+                border-radius: 10px;
+                height: 5vh;
+                width:25%;
+                font-size: 1.3em;
+                box-sizing: border-box;
+                font-family: serif;
+            }
 
-li:hover {
-    background-color: #C4C4C4;
-}
+            ::placeholder { 
+                color: white;
+                opacity: 1; 
+                padding: 0 0 0 7%;
+            }
 
-ul{
-    padding:0;
-}
+            .buttons{
+                width:8%;
+                height:5vh;
+                border-radius: 30px;
+                background-color: #F0CCBC;
+            }
 
-#search1{
-    /*height: 4vh;
-    width: 25%;
-    border-radius: 10px;
-    margin:2% auto 0 auto;
-    display: block;*/
-    margin:10% auto 0 auto;
-    display: block;
+            #foot{
+                margin:0 auto 2% auto;
+                width: 80%;
+                display: flex;              
+                flex-direction: row;            /* default value; can be omitted */
+                justify-content: space-between;
+                
+                position:absolute;
+                bottom:0;
+                left: 0; 
+                right: 0; 
+            }
 
-    color:white;
-    background-color:#29293d;
-    border: 2px solid white;
-    border-radius: 10px;
-    height: 7vh;
-    width:25%;
-    font-size: 1.3em;
-    box-sizing: border-box;
-    font-family: serif;
-}
-
-#search{
-    margin:2% auto 0 auto;
-    display: block;
-
-    color:white;
-    background-color:#29293d;
-    border: 2px solid white;
-    border-radius: 10px;
-    height: 7vh;
-    width:25%;
-    font-size: 1.3em;
-    box-sizing: border-box;
-    font-family: serif;
-}
-
-::placeholder { 
-    color: white;
-    opacity: 1; 
-    padding: 0 0 0 7%;
-}
-
-.buttons{
-    width:8%;
-    height:5vh;
-    border-radius: 30px;
-    background-color: #F0CCBC;
-}
-
-#foot{
-    margin:0 auto 2% auto;
-    width: 80%;
-    display: flex;              
-    flex-direction: row;            /* default value; can be omitted */
-    justify-content: space-between;
-    
-    position:absolute;
-    bottom:0;
-    left: 0; 
-    right: 0; 
-}
-
-.circle {
-    height: 15px;
-    width: 15px;
-    border-radius: 50%;
-    float: left;
-    margin:0 2% 0 2%;
-    border: 2px solid white;
-}
+            .circle {
+                height: 15px;
+                width: 15px;
+                border-radius: 50%;
+                float: left;
+                margin:0 2% 0 2%;
+                border: 2px solid white;
+            }
         </style>
-
-        <meta charset="UTF-8" />
+    <meta charset="UTF-8" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="sellerStyle.css" />
     <link
       href="https://use.fontawesome.com/releases/v5.0.7/css/all.css"
       rel="stylesheet"
@@ -322,7 +271,8 @@ ul{
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>{{ form.submit() }}</p>
+        <p id="buttons">{{ form.submit() }}</p>
     </form>
+
     </body>
-    </html>
+</html>

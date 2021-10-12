@@ -6,122 +6,112 @@
         {% else %}
         <title>Pied Piper</title>
         {% endif %}
-        <style>
-           html,
-body {
-  max-width: 100%;
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
+      <style>
+        html,
+        body {
+          max-width: 100%;
+          overflow-x: hidden;
+          overflow-y: hidden;
+        }
 
-body {
-  margin: 0;
-  padding: 0;
-}
+        body {
+          margin: 0;
+          padding: 0;
+        }
 
-#topDesign {
-  background-color: white;
-}
-#title {
-  margin-left: 20px;
-}
-#bottomDesign {
-  background-color: #272838;
-}
+        #topDesign {
+          background-color: white;
+        }
+        #title {
+          margin-left: 20px;
+        }
+        #bottomDesign {
+          background-color: #272838;
+        }
 
-#triangle1 {
-  width: 0;
-  height: 0;
-  border-top: 25px solid transparent;
-  border-left: 50px solid black;
-  margin-bottom: 10px;
-}
+        #triangle1 {
+          width: 0;
+          height: 0;
+          border-top: 25px solid transparent;
+          border-left: 50px solid black;
+          margin-bottom: 10px;
+        }
 
-#triangle2 {
-  position: absolute;
-  left: 50%;
-  top: 0px;
-  width: 0;
-  height: 0;
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
-  border-top: 50px solid black;
-}
+        #triangle2 {
+          position: absolute;
+          left: 50%;
+          top: 0px;
+          width: 0;
+          height: 0;
+          border-left: 25px solid transparent;
+          border-right: 25px solid transparent;
+          border-top: 50px solid black;
+        }
 
-#circle1 {
-  border-radius: 50%;
-  position: absolute;
-  width: 250px;
-  height: 250px;
-  left: 60%;
-  top: 120px;
+        #circle1 {
+          border-radius: 50%;
+          position: absolute;
+          width: 250px;
+          height: 250px;
+          left: 60%;
+          top: 120px;
 
-  background: #f0ccbc;
-  mix-blend-mode: normal;
-}
+          background: #f0ccbc;
+          mix-blend-mode: normal;
+        }
 
-#circle2 {
-  border-radius: 50%;
-  position: absolute;
-  width: 250px;
-  height: 250px;
-  left: 85%;
-  top: -40px;
+        #circle2 {
+          border-radius: 50%;
+          position: absolute;
+          width: 250px;
+          height: 250px;
+          left: 85%;
+          top: -40px;
 
-  background: #f0ccbc;
-  mix-blend-mode: normal;
-}
+          background: #f0ccbc;
+          mix-blend-mode: normal;
+        }
 
-#picture {
-  position: absolute;
-  left: 72%;
-  top: 110px;
-}
+        #picture {
+          position: absolute;
+          left: 72%;
+          top: 110px;
+        }
 
-#buyerButton {
-  margin-top: 50px;
-  background-color: #f0ccbc;
-  border-radius: 20px;
-  padding: 10px 32px;
-  font-size: 20px;
-  margin-left: 45%;
-}
-#sellerButton {
-  background-color: #f0ccbc;
-  border-radius: 20px;
-  padding: 10px 32px;
-  font-size: 20px;
-  margin-top: 10px;
-  margin-bottom: 60px;
-  margin-left: 45%;
-}
+        #sellerButton {
+          margin-top: 5%;
+          margin-bottom: 5%;
+          background-color: #f0ccbc;
+          border-radius: 20px;
+          padding: 10px 32px;
+          font-size: 20px;
+          margin-left: 43%;
+        }
+        
+        a:link {
+        color: rgb(48, 46, 190);
+        background-color: transparent;
+        text-decoration: none;
+        }
 
-
-            a:link {
+        a:visited {
             color: rgb(48, 46, 190);
-            background-color: transparent;
-            text-decoration: none;
-            }
+        background-color: transparent;
+        text-decoration: none;
+        }
 
-            a:visited {
-                color: rgb(48, 46, 190);
-            background-color: transparent;
-            text-decoration: none;
-            }
+        a:hover {
+            color: rgb(48, 46, 190);
+        background-color: transparent;
+        text-decoration: underline;
+        }
 
-            a:hover {
-                color: rgb(48, 46, 190);
-            background-color: transparent;
-            text-decoration: underline;
-            }
-
-            a:active {
-                color: rgb(48, 46, 190);
-            background-color: transparent;
-            text-decoration: underline;
-            }
-
-        </style>
+        a:active {
+            color: rgb(48, 46, 190);
+        background-color: transparent;
+        text-decoration: underline;
+        }
+    </style>
 
     <meta charset="UTF-8" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -163,7 +153,7 @@ body {
     <div id="topDesign">
         <div id="triangle2"></div>
         <div id="title">
-            <h1 style="font-size: 130px">Seller Functions</h1>
+            <h1 style="font-size: 130px">Seller</h1>
 <p style="font-size: 25px">
     Please choose which function you would like to use:
   </p>
@@ -177,7 +167,7 @@ body {
 
        </div>
 
-<div id="bottomDesign"><p><b><a href="{{ url_for('resalepriceestimator', username=current_user.username) }}"><button id="buyerButton">Resale Price Estimator</button></a></b></p>
+<div id="bottomDesign"><p><b><a href="{{ url_for('resalepriceestimator', username=current_user.username) }}"><button id="sellerButton">Resale Price Estimator</button></a></b></p>
     <p><b><a>
 
 
