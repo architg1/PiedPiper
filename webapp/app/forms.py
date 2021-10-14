@@ -50,9 +50,11 @@ class resalepriceinputform(FlaskForm):
     ogprice = IntegerField('Enter Original Price')
     floorArea = IntegerField('Enter Floor Area (in sqm)')
     storey = SelectField(u'Select Preferred Storey', choices=[
-                         ('Low', 'Low'), ('Medium', 'Medium'), ('High', 'High')])
-    age = SelectField(u'Select Preferred Age', choices=[
-                      ('New', 'New'), ('Medium', 'Medium'), ('Old', 'Old')])
+                         ('01 TO 03', '01 TO 03'), ('04 TO 06', '04 TO 06'), ('07 TO 09', '07 TO 09'),('10 TO 12','10 TO 12'),
+                         ('13 TO 15','13 TO 15'),('16 TO 18', '16 TO 18'),('19 TO 21', '19 TO 21'),('22 TO 24','22 TO 24'),
+                         ('25 TO 27','25 TO 27'),('28 TO 30','28 TO 30'),('31 TO 33','31 TO 33'),('34 TO 36','34 TO 36'),('37 TO 39','37 TO 39'),
+                         ('40 TO 42','40 TO 42'),('43 TO 45','43 TO 45')])
+    age = IntegerField(u'Enter remaining years of flat')
     submit = SubmitField('Submit')
 
 
@@ -75,9 +77,11 @@ class priceEstimatorForm(FlaskForm):
         '3 ROOM', '3 ROOM'), ('4 ROOM', '4 ROOM'), ('5 ROOM', '5 ROOM'), ('EXECUTIVE', 'EXECUTIVE')])
     floorArea = IntegerField('Enter Floor Area (in sqm)')
     storey = SelectField(u'Select Preferred Storey', choices=[
-                         ('Low', 'Low'), ('Medium', 'Medium'), ('High', 'High')])
-    age = SelectField(u'Select Preferred Age', choices=[
-                      ('New', 'New'), ('Medium', 'Medium'), ('Old', 'Old')])
+                         ('01 TO 03', '01 TO 03'), ('04 TO 06', '04 TO 06'), ('07 TO 09', '07 TO 09'),('10 TO 12','10 TO 12'),
+                         ('13 TO 15','13 TO 15'),('16 TO 18', '16 TO 18'),('19 TO 21', '19 TO 21'),('22 TO 24','22 TO 24'),
+                         ('25 TO 27','25 TO 27'),('28 TO 30','28 TO 30'),('31 TO 33','31 TO 33'),('34 TO 36','34 TO 36'),('37 TO 39','37 TO 39'),
+                         ('40 TO 42','40 TO 42'),('43 TO 45','43 TO 45')])
+    age = IntegerField(u'Enter expected remaining years of desired flat')
     submit = SubmitField('Submit')
 
 
@@ -86,7 +90,9 @@ class townForm(FlaskForm):
         '3 ROOM', '3 ROOM'), ('4 ROOM', '4 ROOM'), ('5 ROOM', '5 ROOM'), ('EXECUTIVE', 'EXECUTIVE')])
     floorArea = IntegerField('Enter Floor Area (in sqm)')
     storey = SelectField(u'Select Preferred Storey', choices=[
-                         ('Low', 'Low'), ('Medium', 'Medium'), ('High', 'High')])
-    age = SelectField(u'Select Preferred Age', choices=[
-                      ('New', 'New'), ('Medium', 'Medium'), ('Old', 'Old')])
+                         ('01 TO 03', '01 TO 03'), ('04 TO 06', '04 TO 06'), ('07 TO 09', '07 TO 09'),('10 TO 12','10 TO 12'),
+                         ('13 TO 15','13 TO 15'),('16 TO 18', '16 TO 18'),('19 TO 21', '19 TO 21'),('22 TO 24','22 TO 24'),
+                         ('25 TO 27','25 TO 27'),('28 TO 30','28 TO 30'),('31 TO 33','31 TO 33'),('34 TO 36','34 TO 36'),('37 TO 39','37 TO 39'),
+                         ('40 TO 42','40 TO 42'),('43 TO 45','43 TO 45')])
+    age = IntegerField(u'Enter expected remaining years of desired flat')
     submit = SubmitField('Submit')

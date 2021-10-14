@@ -21,16 +21,14 @@
     <div><p>Original Price: {{ ri.ogprice }}</p></div>
     <div><p>Floor Area: {{ ri.floorArea }}</p></div>
     <div><p>Storey: {{ ri.storey }}</p></div>
-    <div><p>Flat Age: {{ ri.age }}</p></div>
+    <div><p>Remaining Lease: {{ ri.age }}</p></div>
     <div>
       <p><b>RESULT: ${{ ri.OUTPUT }}</b></p>
     </div>
     <p>
       <button id="delete">
         <a
-          href="{{ url_for('delete',username=current_user.username, id = ri.id) }}"
-          >Delete Entry</a
-        >
+          href="{{ url_for('delete',username=current_user.username, id = ri.id) }}">Delete Entry</a>
       </button>
     </p>
     {% else %}
@@ -45,7 +43,7 @@
     <div><p>Flat Type: {{ ri.flatType }}</p></div>
     <div><p>Floor Area: {{ ri.floorArea }}</p></div>
     <div><p>Storey: {{ ri.storey }}</p></div>
-    <div><p>Flat Age: {{ ri.age }}</p></div>
+    <div><p>Remaining Lease: {{ ri.age }}</p></div>
     <div>
       <p><b>RESULT: ${{ ri.OUTPUT }}</b></p>
     </div>
@@ -65,7 +63,7 @@
     <div><p>Flat Type: {{ ri.flatType }}</p></div>
     <div><p>Floor Area: {{ ri.floorArea }}</p></div>
     <div><p>Storey: {{ ri.storey }}</p></div>
-    <div><p>Flat Age: {{ ri.age }}</p></div>
+    <div><p>Remaining Lease: {{ ri.age }}</p></div>
     <div>
       <p><b>1ST RECOMMENDED TOWN: {{ ri.OUTPUT1 }}</b></p>
     </div>
