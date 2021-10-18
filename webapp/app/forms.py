@@ -95,4 +95,5 @@ class townForm(FlaskForm):
                          ('25 TO 27','25 TO 27'),('28 TO 30','28 TO 30'),('31 TO 33','31 TO 33'),('34 TO 36','34 TO 36'),('37 TO 39','37 TO 39'),
                          ('40 TO 42','40 TO 42'),('43 TO 45','43 TO 45')])
     age = IntegerField(u'Enter expected remaining years of desired flat')
+    budget = IntegerField(u'Enter expected budget in SGD')
     submit = SubmitField('Submit')

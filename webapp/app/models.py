@@ -62,6 +62,7 @@ class flatpriceInput(db.Model):
 
 class townInput(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    budget = db.Column(db.Integer)
     flatType = db.Column(db.String(64))
     floorArea = db.Column(db.Integer)
     storey = db.Column(db.String(64))

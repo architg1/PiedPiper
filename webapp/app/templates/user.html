@@ -60,18 +60,13 @@
 
     <h2><u>Town Recommender History:</u></h2>
     {% for ri in user.townInput %}
+    <div><p>Indicated Budget: S${{ ri.budget }}</p></div>
     <div><p>Flat Type: {{ ri.flatType }}</p></div>
     <div><p>Floor Area: {{ ri.floorArea }}</p></div>
     <div><p>Storey: {{ ri.storey }}</p></div>
     <div><p>Remaining Lease: {{ ri.age }}</p></div>
     <div>
-      <p><b>1ST RECOMMENDED TOWN: {{ ri.OUTPUT1 }}</b></p>
-    </div>
-    <div>
-      <p><b>2ND RECOMMENDED TOWN: {{ ri.OUTPUT2 }}</b></p>
-    </div>
-    <div>
-      <p><b>3RD RECOMMENDED TOWN: {{ ri.OUTPUT3 }}</b></p>
+      <p><b>RECOMMENDED TOWN: {{ ri.OUTPUT1 }}</b></p>
     </div>
     <p>
       <button id="delete">
