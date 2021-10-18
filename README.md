@@ -13,7 +13,6 @@ pip install flask-login
 pip install email-validator  
 pip install pandas
 pip install scikit-learn
-pip install pandas
   
 4. after that to run type the following:  
   
