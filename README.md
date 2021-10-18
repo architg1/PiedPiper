@@ -11,6 +11,8 @@ pip install flask-sqlalchemy
 pip install flask-migrate  
 pip install flask-login  
 pip install email-validator  
+pip install pandas
+pip install scikit-learn
   
 4. after that to run type the following:  
   
