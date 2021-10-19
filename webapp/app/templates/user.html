@@ -28,7 +28,7 @@
     <p>
       <button id="delete">
         <a
-          id="del"
+          class="del"
           href="{{ url_for('delete',username=current_user.username, id = ri.id) }}"
           >Delete Entry</a
         >
@@ -53,7 +53,7 @@
     <p>
       <button id="delete">
         <a
-          id="del"
+          class="del"
           href="{{ url_for('deletebuyer',username=current_user.username, id = ri.id) }}"
           >Delete Entry</a
         >
@@ -75,7 +75,7 @@
     <p>
       <button id="delete">
         <a
-          id="del"
+          class="del"
           href="{{ url_for('deletetown',username=current_user.username, id = ri.id) }}"
           >Delete Entry</a
         >
