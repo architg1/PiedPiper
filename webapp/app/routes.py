@@ -90,24 +90,26 @@ def seller(username):
 @app.route('/resalepriceestimator/<username>', methods=['GET', 'POST'])
 @login_required
 def resalepriceestimator(username):
-    df = pd.read_csv("resale-flat-prices-based-on-registration-date-from-jan-2017-onwards.csv")
+    df = pd.read_csv(
+        "resale-flat-prices-based-on-registration-date-from-jan-2017-onwards.csv")
     df['remaining_years'] = 100 - (2022 - df['lease_commence_date'])
-    overall_df = df[['town', 'flat_type','storey_range','floor_area_sqm','remaining_years', 'resale_price']]
+    overall_df = df[['town', 'flat_type', 'storey_range',
+                     'floor_area_sqm', 'remaining_years', 'resale_price']]
     user = User.query.filter_by(username=username).first_or_404()
     form = resalepriceinputform()
     if form.validate_on_submit():
         # MACHINE LEARNING PART ------------------------------------------------------------------------------------------------
-        town =form.town.data
+        town = form.town.data
         flat = form.flatType.data
         storey = form.storey.data
         floor = form.floorArea.data
-        years =form.age.data
-        data = {'town':[town],
-        'flat_type':[flat],
-       'storey_range':[storey],
-       'floor_area_sqm':[floor],
-       'remaining_years':[years],
-       'resale_price':[0]}
+        years = form.age.data
+        data = {'town': [town],
+                'flat_type': [flat],
+                'storey_range': [storey],
+                'floor_area_sqm': [floor],
+                'remaining_years': [years],
+                'resale_price': [0]}
         user_df = pd.DataFrame(data)
         final_df = user_df.append(overall_df)
         final_df.iloc[0]
@@ -119,19 +121,22 @@ def resalepriceestimator(username):
         final_df['storey_range'] = final_df['storey_range'].astype('category')
         final_df['storey_range_cat'] = final_df['storey_range'].cat.codes
         # Dataframe for training and testing purposes
-        ml_df = final_df.iloc[1:,:]
-        train, test = train_test_split(ml_df, test_size=0.2, random_state = 4)
+        ml_df = final_df.iloc[1:, :]
+        train, test = train_test_split(ml_df, test_size=0.2, random_state=4)
         regr = linear_model.LinearRegression()
-        train_x = np.asanyarray(train[['town_cat','flat_type_cat','storey_range_cat','floor_area_sqm','remaining_years']])
+        train_x = np.asanyarray(
+            train[['town_cat', 'flat_type_cat', 'storey_range_cat', 'floor_area_sqm', 'remaining_years']])
         train_y = np.asanyarray(train[['resale_price']])
-        regr.fit (train_x, train_y)
-        test_x = np.asanyarray(test[['town_cat','flat_type_cat','storey_range_cat','floor_area_sqm','remaining_years']])
+        regr.fit(train_x, train_y)
+        test_x = np.asanyarray(
+            test[['town_cat', 'flat_type_cat', 'storey_range_cat', 'floor_area_sqm', 'remaining_years']])
         test_y = np.asanyarray(test[['resale_price']])
         test_y_hat = regr.predict(test_x)
-        user_info = np.asanyarray(final_df[['town_cat','flat_type_cat','storey_range_cat','floor_area_sqm','remaining_years']])
+        user_info = np.asanyarray(
+            final_df[['town_cat', 'flat_type_cat', 'storey_range_cat', 'floor_area_sqm', 'remaining_years']])
         final_value = regr.predict(user_info)
-        ## MACHINE LEARNING PART ---------------------------------------------------------------------------------------------
-        result = int (final_value[0]) 
+        # MACHINE LEARNING PART ---------------------------------------------------------------------------------------------
+        result = int(final_value[0])
         rsinput = resaleInput(town=form.town.data, flatType=form.flatType.data, ogprice=form.ogprice.data,
                               floorArea=form.floorArea.data, storey=form.storey.data, age=form.age.data, OUTPUT=result, user_id=user.id)
         db.session.add(rsinput)
@@ -144,24 +149,26 @@ def resalepriceestimator(username):
 @app.route('/flatpriceestimator/<username>', methods=['GET', 'POST'])
 @login_required
 def flatpriceestimator(username):
-    df = pd.read_csv("resale-flat-prices-based-on-registration-date-from-jan-2017-onwards.csv")
+    df = pd.read_csv(
+        "resale-flat-prices-based-on-registration-date-from-jan-2017-onwards.csv")
     df['remaining_years'] = 100 - (2022 - df['lease_commence_date'])
-    overall_df = df[['town', 'flat_type','storey_range','floor_area_sqm','remaining_years', 'resale_price']]
+    overall_df = df[['town', 'flat_type', 'storey_range',
+                     'floor_area_sqm', 'remaining_years', 'resale_price']]
     user = User.query.filter_by(username=username).first_or_404()
     form = priceEstimatorForm()
     if form.validate_on_submit():
         # MACHINE LEARNING PART ------------------------------------------------------------------------------------------------
-        town =form.town.data
+        town = form.town.data
         flat = form.flatType.data
         storey = form.storey.data
         floor = form.floorArea.data
-        years =form.age.data
-        data = {'town':[town],
-        'flat_type':[flat],
-       'storey_range':[storey],
-       'floor_area_sqm':[floor],
-       'remaining_years':[years],
-       'resale_price':[0]}
+        years = form.age.data
+        data = {'town': [town],
+                'flat_type': [flat],
+                'storey_range': [storey],
+                'floor_area_sqm': [floor],
+                'remaining_years': [years],
+                'resale_price': [0]}
         user_df = pd.DataFrame(data)
         final_df = user_df.append(overall_df)
         final_df.iloc[0]
@@ -173,19 +180,22 @@ def flatpriceestimator(username):
         final_df['storey_range'] = final_df['storey_range'].astype('category')
         final_df['storey_range_cat'] = final_df['storey_range'].cat.codes
         # Dataframe for training and testing purposes
-        ml_df = final_df.iloc[1:,:]
-        train, test = train_test_split(ml_df, test_size=0.2, random_state = 4)
+        ml_df = final_df.iloc[1:, :]
+        train, test = train_test_split(ml_df, test_size=0.2, random_state=4)
         regr = linear_model.LinearRegression()
-        train_x = np.asanyarray(train[['town_cat','flat_type_cat','storey_range_cat','floor_area_sqm','remaining_years']])
+        train_x = np.asanyarray(
+            train[['town_cat', 'flat_type_cat', 'storey_range_cat', 'floor_area_sqm', 'remaining_years']])
         train_y = np.asanyarray(train[['resale_price']])
-        regr.fit (train_x, train_y)
-        test_x = np.asanyarray(test[['town_cat','flat_type_cat','storey_range_cat','floor_area_sqm','remaining_years']])
+        regr.fit(train_x, train_y)
+        test_x = np.asanyarray(
+            test[['town_cat', 'flat_type_cat', 'storey_range_cat', 'floor_area_sqm', 'remaining_years']])
         test_y = np.asanyarray(test[['resale_price']])
         test_y_hat = regr.predict(test_x)
-        user_info = np.asanyarray(final_df[['town_cat','flat_type_cat','storey_range_cat','floor_area_sqm','remaining_years']])
+        user_info = np.asanyarray(
+            final_df[['town_cat', 'flat_type_cat', 'storey_range_cat', 'floor_area_sqm', 'remaining_years']])
         final_value = regr.predict(user_info)
-        ## MACHINE LEARNING PART ---------------------------------------------------------------------------------------------
-        result = int (final_value[0])
+        # MACHINE LEARNING PART ---------------------------------------------------------------------------------------------
+        result = int(final_value[0])
         fpinput = flatpriceInput(town=form.town.data, flatType=form.flatType.data, floorArea=form.floorArea.data,
                                  storey=form.storey.data, age=form.age.data, OUTPUT=result, user_id=user.id)
         db.session.add(fpinput)
@@ -197,23 +207,26 @@ def flatpriceestimator(username):
 @app.route('/townrecommender/<username>', methods=['GET', 'POST'])
 @login_required
 def townrecommender(username):
-    df = pd.read_csv("resale-flat-prices-based-on-registration-date-from-jan-2017-onwards.csv")
+    df = pd.read_csv(
+        "resale-flat-prices-based-on-registration-date-from-jan-2017-onwards.csv")
     df['remaining_years'] = 100 - (2022 - df['lease_commence_date'])
-    overall_df = df[['town', 'flat_type','storey_range','floor_area_sqm','remaining_years', 'resale_price']]
+    overall_df = df[['town', 'flat_type', 'storey_range',
+                     'floor_area_sqm', 'remaining_years', 'resale_price']]
     user = User.query.filter_by(username=username).first_or_404()
     form = townForm()
     if form.validate_on_submit():
+        # MACHINE LEARNING PART ------------------------------------------------------------------------------------------------
         price = form.budget.data
         flat = form.flatType.data
         storey = form.storey.data
         floor = form.floorArea.data
         years = form.age.data
-        data = {'town':[0],
-        'flat_type':[flat],
-       'storey_range':[storey],
-       'floor_area_sqm':[floor],
-       'remaining_years':[years],
-       'resale_price':[price]}
+        data = {'town': [0],
+                'flat_type': [flat],
+                'storey_range': [storey],
+                'floor_area_sqm': [floor],
+                'remaining_years': [years],
+                'resale_price': [price]}
         user_df = pd.DataFrame(data)
         final_df = user_df.append(overall_df)
         final_df.iloc[0]
@@ -223,18 +236,22 @@ def townrecommender(username):
         final_df['flat_type_cat'] = final_df['flat_type'].cat.codes
         final_df['storey_range'] = final_df['storey_range'].astype('category')
         final_df['storey_range_cat'] = final_df['storey_range'].cat.codes
-        ml_df = final_df.iloc[1:,:]
-        train, test = train_test_split(ml_df, test_size=0.2, random_state = 4)
-        train_x = np.asanyarray(train[['flat_type_cat','storey_range_cat','floor_area_sqm','resale_price']])
+        ml_df = final_df.iloc[1:, :]
+        train, test = train_test_split(ml_df, test_size=0.2, random_state=4)
+        train_x = np.asanyarray(
+            train[['flat_type_cat', 'storey_range_cat', 'floor_area_sqm', 'resale_price']])
         train_y = np.asanyarray(train[['town_cat']])
-        test_x = np.asanyarray(test[['flat_type_cat','storey_range_cat','floor_area_sqm','resale_price']])
+        test_x = np.asanyarray(
+            test[['flat_type_cat', 'storey_range_cat', 'floor_area_sqm', 'resale_price']])
         test_y = np.asanyarray(test[['town_cat']])
-        RF = RandomForestClassifier(n_estimators=50, random_state=0,max_depth=10)
+        RF = RandomForestClassifier(
+            n_estimators=50, random_state=0, max_depth=10)
         RF.fit(train_x, train_y.ravel())
         pred_y = RF.predict(test_x)
-        round(RF.score(train_x,train_y), 4)
-        print("Accuracy:",metrics.accuracy_score(test_y, pred_y))
-        user_info = np.asanyarray(final_df[['flat_type_cat','storey_range_cat','floor_area_sqm','resale_price']])
+        round(RF.score(train_x, train_y), 4)
+        print("Accuracy:", metrics.accuracy_score(test_y, pred_y))
+        user_info = np.asanyarray(
+            final_df[['flat_type_cat', 'storey_range_cat', 'floor_area_sqm', 'resale_price']])
         final_value = RF.predict(user_info)
         final_value[0]
         criteria = (final_df['town_cat'] == final_value[0])

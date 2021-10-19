@@ -153,12 +153,28 @@
             #search{
                 margin:2% auto 0 auto;
                 display: block;
-                padding: 0.6%;
+                padding: 0.4%;
                 color:white;
                 background-color:#29293d;
                 border: 2px solid white;
                 border-radius: 10px;
                 height: 5vh;
+                width:25%;
+                font-size: 1.3em;
+                box-sizing: border-box;
+                font-family: serif;
+            }
+
+            #lastSearch{
+                margin:2% auto 0 auto;
+                display: block;
+                padding: 0.4%;
+                padding-right: 2.5%;
+                color:white;
+                background-color:#29293d;
+                border: 2px solid white;
+                border-radius: 10px;
+                height: 10vh;
                 width:25%;
                 font-size: 1.3em;
                 box-sizing: border-box;
@@ -279,7 +295,7 @@
                 {% endfor %}
             </p>
             <p>
-                <p id ="search"> {{ form.age.label }}<br></p> 
+                <p id ="lastSearch"> {{ form.age.label }}<br></p> 
                 <p>{{ form.age(size=10) }}<br></p>
                 {% for error in form.age.errors %}
                 <span style="color: red;">[{{ error }}]</span>

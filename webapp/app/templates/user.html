@@ -28,7 +28,9 @@
     <p>
       <button id="delete">
         <a
-          href="{{ url_for('delete',username=current_user.username, id = ri.id) }}">Delete Entry</a>
+          href="{{ url_for('delete',username=current_user.username, id = ri.id) }}"
+          >Delete Entry</a
+        >
       </button>
     </p>
     {% else %}
