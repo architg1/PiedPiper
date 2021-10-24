@@ -1,187 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <style>
-        *{
-    margin: 0;
-    padding:0;
-}
+      * {
+        margin: 0;
+        padding: 0;
+      }
 
-body{
-    background-color: #272838;
-}
+      body {
+        background-color: #272838;
+        max-width: 100%;
+        overflow-x: hidden;
+        overflow-y: hidden;
+      }
 
-#header{
-    height: 25vh;
-    background-color: white;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 25vh; 
-    font-size: 3vw;
-}
+      #header {
+        height: 25vh;
+        background-color: white;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 25vh;
+        font-size: 3vw;
+      }
 
-#house{
-    position: absolute;
-    height: 17vh;
-    top: 0 ;
-    bottom: 0 ;
-    left:15%;
-    margin: auto 0 auto 0;
-}
+      #house {
+        position: absolute;
+        height: 17vh;
+        top: 0;
+        bottom: 0;
+        left: 15%;
+        margin: auto 0 auto 0;
+      }
 
-#circle{
-    position: absolute;
-    width: 22vh;
-    height: 22vh;
-    background-color: #F0CCBC;
-    border-radius: 50%;
-    left: 23%;
-    top:-40%;
-}
+      #circle {
+        position: absolute;
+        width: 22vh;
+        height: 22vh;
+        background-color: #f0ccbc;
+        border-radius: 50%;
+        left: 23%;
+        top: -40%;
+      }
 
-#circle1{
-    position: absolute;
-    width: 22vh;
-    height: 22vh;
-    background-color: #F0CCBC;
-    border-radius: 50%;
-    left: 70%;
-    bottom:-40%;
-}
+      #circle1 {
+        position: absolute;
+        width: 22vh;
+        height: 22vh;
+        background-color: #f0ccbc;
+        border-radius: 50%;
+        left: 70%;
+        bottom: -40%;
+      }
 
-.triangle-down {
-    position: absolute;
-	width: 0;
-	height: 0;
-	border-left: 3vh solid transparent;
-	border-right: 3vh solid transparent;
-	border-top: 6vh solid black;
-    top: 0;
-    left: 70%;
-}
+      .triangle-down {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 3vh solid transparent;
+        border-right: 3vh solid transparent;
+        border-top: 6vh solid black;
+        top: 0;
+        left: 70%;
+      }
 
-.triangle-up {
-    position: absolute;
-	width: 0;
-	height: 0;
-	border-left: 3vh solid transparent;
-	border-right: 3vh solid transparent;
-	border-bottom: 6vh solid black;
-    left: 30%;
-    bottom: 0;
-}
+      .triangle-up {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 3vh solid transparent;
+        border-right: 3vh solid transparent;
+        border-bottom: 6vh solid black;
+        left: 30%;
+        bottom: 0;
+      }
 
-#container{
-    height: 65vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+      #container {
+        height: 65vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
-#result{
-    display: flex;
-    justify-content: center;
-    align-items: center;   
-    text-align: center;
-    height: auto; /*25vh*/
-    width: 30vw;
-    background-color: #F0CCBC;
-    font-size: 1.5vw;
-    border-radius: 10px;
-    padding:3% 0 3% 0;
-    flex-direction: column;
-}
+      #result {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: auto; /*25vh*/
+        width: 30vw;
+        background-color: #f0ccbc;
+        font-size: 1.5vw;
+        border-radius: 10px;
+        padding: 3% 0 3% 0;
+        flex-direction: column;
+      }
 
-.buttons{
-    width: 8vw;
-    height:5vh;
-    border-radius: 30px;
-    background-color: #F0CCBC;
-    float:right;
-    margin-right: 10vw;
-}
+      .buttons {
+        width: 8vw;
+        height: 5vh;
+        border-radius: 30px;
+        background-color: #f0ccbc;
+        /* float: right; */
+        margin-right: 10vw;
+        position: absolute;
+        left: 85%;
+        bottom: 5%;
+      }
 
-#recommend{
-    height: 30vh; /*25vh*/
-    width: 30vw;
-    background-color: #F0CCBC;
-    font-size: 1.5vw;
-    border-radius: 10px;
-    padding:2% 0 0 2%;
-    box-sizing: border-box;
-}
+      #recommend {
+        height: 30vh; /*25vh*/
+        width: 30vw;
+        background-color: #f0ccbc;
+        font-size: 1.5vw;
+        border-radius: 10px;
+        padding: 2% 0 0 2%;
+        box-sizing: border-box;
+      }
 
-.map{
-    width: 9vw;
-    height:1.5vw;
-    border-radius: 30px;
-    background-color: #95AAA2;
-    border: none;
-    margin-right: 2.5vw;
-    font-size: 0.8vw;
-}
+      .map {
+        width: 9vw;
+        height: 1.5vw;
+        border-radius: 30px;
+        background-color: #95aaa2;
+        border: none;
+        margin-right: 2.5vw;
+        font-size: 0.8vw;
+      }
 
-span{
-    display: block;
-    margin-bottom: 1.5vh;
-}
+      span {
+        display: block;
+        margin-bottom: 1.5vh;
+      }
+
+      a:link {
+        color: black;
+        text-decoration: none;
+      }
+
+      a:visited {
+        color: #95aaa2;
+        background-color: rgb(0, 129, 129);
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: rgb(0, 129, 129);
+        background-color: transparent;
+        text-decoration: underline;
+      }
+
+      a:active {
+        color: rgb(0, 129, 129);
+        background-color: transparent;
+        text-decoration: underline;
+      }
     </style>
-    <link rel="stylesheet" href="./style/style1.css">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/style1.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <div>
-        <div id="pied">Quick Access:</div>
-        <a href="{{ url_for('index') }}">Home</a>
-        {% if current_user.is_anonymous %}
-        <a href="{{ url_for('login') }}">Login</a>
-        {% else %}
-        <a href="{{ url_for('user', username=current_user.username) }}">Profile</a>
-        <a href="{{ url_for('logout') }}">Logout</a>
-        {% endif %}
+      <div style="color: white">Quick Access:</div>
+      <a href="{{ url_for('index') }}">Home</a>
+      {% if current_user.is_anonymous %}
+      <a href="{{ url_for('login') }}">Login</a>
+      {% else %}
+      <a href="{{ url_for('user', username=current_user.username) }}"
+        >Profile</a
+      >
+      <a href="{{ url_for('logout') }}">Logout</a>
+      {% endif %}
     </div>
-    <hr>
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
+    <hr />
+    {% with messages = get_flashed_messages() %} {% if messages %}
     <ul>
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
     </ul>
-    {% endif %}
-    {% endwith %}
-    {% block content %}{% endblock %}
+    {% endif %} {% endwith %} {% block content %}{% endblock %}
     <div id="header">
-        <img src="{{ url_for('static', filename='picture.png') }}" alt="house" id="house">
-        <div id="circle"></div>
-        <div id="circle1"></div>
-        <div class="triangle-up"></div>
-        <div class="triangle-down"></div>
-        Town Recommendations
+      <img
+        src="{{ url_for('static', filename='picture.png') }}"
+        alt="house"
+        id="house"
+      />
+      <div id="circle"></div>
+      <div id="circle1"></div>
+      <div class="triangle-up"></div>
+      <div class="triangle-down"></div>
+      Town Recommendations
     </div>
 
     <div id="container">
-        <div id="recommend">
-            Your Recommended Town is:
-            <div style="margin-top: 6%;">
-                <div style="float: left;">
-                    {{output1}}<br>
-                    <span></span>
-                </div>
-                <div style="float: right;">
-                    <a href="https://www.google.com/maps/place/{{output1}}" target="_blank"><button class="map">See map & amenities</button></a><br>
-                    <span></span>
-                </div>
-            </div>
+      <div id="recommend">
+        Your Recommended Town is:
+        <div style="margin-top: 6%">
+          <div style="float: left">
+            {{output1}}<br />
+            <span></span>
+          </div>
+          <div style="float: right">
+            <a
+              href="https://www.google.com/maps/place/{{output1}}"
+              target="_blank"
+              ><button class="map">See map & amenities</button></a
+            ><br />
+            <span></span>
+          </div>
         </div>
-        
+      </div>
     </div>
-    
+
     <a href="{{ url_for('index') }}"><button class="buttons">Save</button></a>
-</body>
+  </body>
 </html>
