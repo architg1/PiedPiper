@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, IntegerField
-from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
+from wtforms.validators import NumberRange, ValidationError, DataRequired, Email, EqualTo
 from app.models import User
 
 
@@ -47,8 +47,10 @@ class resalepriceinputform(FlaskForm):
                                                 ('TOA PAYAH', 'TOA PAYOH'), ('WOODLANDS', 'WOODLANDS'), ('YISHUN', 'YISHUN')])
     flatType = SelectField(u'Select Flat type', choices=[('2 ROOM', '2 ROOM'), (
         '3 ROOM', '3 ROOM'), ('4 ROOM', '4 ROOM'), ('5 ROOM', '5 ROOM'), ('EXECUTIVE', 'EXECUTIVE')])
-    ogprice = IntegerField('Enter Original Price')
-    floorArea = IntegerField('Enter Floor Area (in sqm)')
+    ogprice = IntegerField('Enter Original Price',
+                           validators=[NumberRange(min=0)])
+    floorArea = IntegerField('Enter Floor Area (in sqm)',
+                             validators=[NumberRange(min=0)])
     storey = SelectField(u'Select Storey of Flat', choices=[
                          ('01 TO 03', '01 TO 03'), ('04 TO 06', '04 TO 06'), ('07 TO 09',
                                                                               '07 TO 09'), ('10 TO 12', '10 TO 12'),
@@ -57,7 +59,8 @@ class resalepriceinputform(FlaskForm):
                          ('25 TO 27', '25 TO 27'), ('28 TO 30', '28 TO 30'), ('31 TO 33',
                                                                               '31 TO 33'), ('34 TO 36', '34 TO 36'), ('37 TO 39', '37 TO 39'),
                          ('40 TO 42', '40 TO 42'), ('43 TO 45', '43 TO 45')])
-    age = IntegerField(u'Enter remaining years of flat')
+    age = IntegerField(u'Enter remaining years of flat',
+                       validators=[NumberRange(min=0)])
     submit = SubmitField('Submit')
 
 
@@ -78,7 +81,8 @@ class priceEstimatorForm(FlaskForm):
                                                 ('TOA PAYAH', 'TOA PAYOH'), ('WOODLANDS', 'WOODLANDS'), ('YISHUN', 'YISHUN')])
     flatType = SelectField(u'Select Flat type', choices=[('2 ROOM', '2 ROOM'), (
         '3 ROOM', '3 ROOM'), ('4 ROOM', '4 ROOM'), ('5 ROOM', '5 ROOM'), ('EXECUTIVE', 'EXECUTIVE')])
-    floorArea = IntegerField('Enter Floor Area (in sqm)')
+    floorArea = IntegerField('Enter Floor Area (in sqm)',
+                             validators=[NumberRange(min=0)])
     storey = SelectField(u'Select Preferred Storey', choices=[
                          ('01 TO 03', '01 TO 03'), ('04 TO 06', '04 TO 06'), ('07 TO 09',
                                                                               '07 TO 09'), ('10 TO 12', '10 TO 12'),
@@ -87,14 +91,16 @@ class priceEstimatorForm(FlaskForm):
                          ('25 TO 27', '25 TO 27'), ('28 TO 30', '28 TO 30'), ('31 TO 33',
                                                                               '31 TO 33'), ('34 TO 36', '34 TO 36'), ('37 TO 39', '37 TO 39'),
                          ('40 TO 42', '40 TO 42'), ('43 TO 45', '43 TO 45')])
-    age = IntegerField(u'Enter expected remaining years of desired flat')
+    age = IntegerField(u'Enter expected remaining years of desired flat', validators=[
+                       NumberRange(min=0)])
     submit = SubmitField('Submit')
 
 
 class townForm(FlaskForm):
     flatType = SelectField(u'Select Flat type', choices=[('2 ROOM', '2 ROOM'), (
         '3 ROOM', '3 ROOM'), ('4 ROOM', '4 ROOM'), ('5 ROOM', '5 ROOM'), ('EXECUTIVE', 'EXECUTIVE')])
-    floorArea = IntegerField('Enter Floor Area (in sqm)')
+    floorArea = IntegerField('Enter Floor Area (in sqm)',
+                             validators=[NumberRange(min=0)])
     storey = SelectField(u'Select Preferred Storey', choices=[
                          ('01 TO 03', '01 TO 03'), ('04 TO 06', '04 TO 06'), ('07 TO 09',
                                                                               '07 TO 09'), ('10 TO 12', '10 TO 12'),
@@ -103,6 +109,8 @@ class townForm(FlaskForm):
                          ('25 TO 27', '25 TO 27'), ('28 TO 30', '28 TO 30'), ('31 TO 33',
                                                                               '31 TO 33'), ('34 TO 36', '34 TO 36'), ('37 TO 39', '37 TO 39'),
                          ('40 TO 42', '40 TO 42'), ('43 TO 45', '43 TO 45')])
-    age = IntegerField(u'Enter expected remaining years of desired flat')
-    budget = IntegerField(u'Enter expected budget in SGD')
+    age = IntegerField(u'Enter expected remaining years of desired flat', validators=[
+                       NumberRange(min=0)])
+    budget = IntegerField(u'Enter expected budget in SGD',
+                          validators=[NumberRange(min=0)])
     submit = SubmitField('Submit')
