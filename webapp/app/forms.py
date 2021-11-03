@@ -49,7 +49,7 @@ class resalepriceinputform(FlaskForm):
         '3 ROOM', '3 ROOM'), ('4 ROOM', '4 ROOM'), ('5 ROOM', '5 ROOM'), ('EXECUTIVE', 'EXECUTIVE')])
     ogprice = IntegerField('Enter Original Price')
     floorArea = IntegerField('Enter Floor Area (in sqm)')
-    storey = SelectField(u'Select Preferred Storey', choices=[
+    storey = SelectField(u'Select Storey of Flat', choices=[
                          ('01 TO 03', '01 TO 03'), ('04 TO 06', '04 TO 06'), ('07 TO 09',
                                                                               '07 TO 09'), ('10 TO 12', '10 TO 12'),
                          ('13 TO 15', '13 TO 15'), ('16 TO 18', '16 TO 18'), ('19 TO 21',
